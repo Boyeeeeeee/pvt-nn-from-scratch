@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.env
+# raw literature-compiled sheet (carries FYP error columns): keep out of the repo
+data/raw/*.xlsx
+data/raw/*.csv
