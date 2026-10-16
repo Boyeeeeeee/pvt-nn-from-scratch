@@ -1,4 +1,10 @@
+"""Input/target transforms shared by training and prediction.
 
+- rs spans ~10 to 6500 scf/STB, so it enters as log10(rs).
+- Pb spans two orders of magnitude and is judged by relative error, so it is learned in log10 space.
+- Bo (about 1 to 3) is learned on its natural scale.
+- Standardizer statistics are fit on the TRAIN split only and saved next to the weights.
+"""
 import numpy as np
 
 FEATURES = ["rs", "gg", "api", "temp"]

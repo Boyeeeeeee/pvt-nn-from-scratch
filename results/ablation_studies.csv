@@ -1,0 +1,29 @@
+study,variant,target,subset,AARE_mean,AARE_std
+feature ablation,full,pb,all test,26.611,0.667
+feature ablation,full,pb,named-source only,16.525,0.832
+feature ablation,no temp,pb,all test,27.27,1.058
+feature ablation,no temp,pb,named-source only,19.238,1.254
+feature ablation,no gg,pb,all test,31.987,2.39
+feature ablation,no gg,pb,named-source only,19.744,2.648
+feature ablation,no api,pb,all test,38.4,1.739
+feature ablation,no api,pb,named-source only,27.515,0.97
+feature ablation,raw rs (no log),pb,all test,28.57,1.538
+feature ablation,raw rs (no log),pb,named-source only,24.955,2.638
+feature ablation,+ Standing estimate,pb,all test,26.861,0.921
+feature ablation,+ Standing estimate,pb,named-source only,16.185,0.681
+feature ablation,full,bo,all test,3.111,0.211
+feature ablation,full,bo,named-source only,2.985,0.389
+feature ablation,no temp,bo,all test,3.683,0.1
+feature ablation,no temp,bo,named-source only,3.253,0.223
+feature ablation,no gg,bo,all test,3.393,0.121
+feature ablation,no gg,bo,named-source only,3.177,0.464
+feature ablation,no api,bo,all test,3.668,0.252
+feature ablation,no api,bo,named-source only,2.991,0.241
+feature ablation,raw rs (no log),bo,all test,2.649,0.113
+feature ablation,raw rs (no log),bo,named-source only,2.77,0.224
+feature ablation,+ Standing estimate,bo,all test,2.861,0.207
+feature ablation,+ Standing estimate,bo,named-source only,3.109,0.256
+joint vs separate,joint 2-output network,pb,all test,26.351,0.861
+joint vs separate,joint 2-output network,pb,named-source only,16.243,0.622
+joint vs separate,joint 2-output network,bo,all test,3.253,0.203
+joint vs separate,joint 2-output network,bo,named-source only,2.742,0.223

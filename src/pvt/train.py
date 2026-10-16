@@ -1,4 +1,12 @@
+"""Hand-written training loop for one target.
 
+Usage (repo root):  python src/pvt/train.py --target pb
+                    python src/pvt/train.py --target bo
+
+Everything the loop does is visible here: mini-batching, forward pass, loss, backward(),
+optimizer step, validation each epoch, early stopping on validation loss, and checkpointing
+the best weights. No Trainer/Lightning wrappers.
+"""
 import argparse
 import copy
 import json
@@ -12,7 +20,7 @@ import torch
 from torch import nn
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from pvt.features import Standardizer, build_x, from_target, to_target  # noqa: E402
+from pvt.features import FEATURES, Standardizer, build_x, from_target, to_target  # noqa: E402
 from pvt.metrics import aare, r2  # noqa: E402
 from pvt.model import PVTNet  # noqa: E402
 from pvt.splits import load_split  # noqa: E402
@@ -123,7 +131,9 @@ def main():
     torch.save({"state_dict": model.state_dict(), "hidden": a.hidden, "dropout": a.dropout},
                out / f"{a.target}_model.pt")
     with open(out / f"{a.target}_scalers.json", "w") as f:
-        json.dump({"x": xs.to_dict(), "y": ys.to_dict(), "target": a.target}, f)
+        ranges = {c: [float(df.loc[split["train"], c].min()), float(df.loc[split["train"], c].max())]
+                  for c in FEATURES}
+        json.dump({"x": xs.to_dict(), "y": ys.to_dict(), "target": a.target, "ranges": ranges}, f)
     Path("results").mkdir(exist_ok=True)
     with open(f"results/history_{a.target}.json", "w") as f:
         json.dump(hist, f)

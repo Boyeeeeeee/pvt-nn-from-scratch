@@ -1,4 +1,15 @@
+"""Compare the networks with the classical baselines on the saved test split.
 
+Usage (repo root):  python src/pvt/evaluate.py
+
+What it does, per target (pb, bo):
+  1. Small hyperparameter grid, 5 seeds each. The winner is chosen on VALIDATION AARE only.
+  2. Retrains the winner with 10 seeds and reports mean +/- std test AARE, plus the AARE of the
+     10-seed ensemble (average of predictions).
+  3. Scores every baseline on the same rows.
+  4. Reports both the full test split and the named-source rows only (the stricter, source-held-out subset).
+Writes results/metrics.csv, results/ablations.csv and figures in results/figures/.
+"""
 import itertools
 import sys
 from pathlib import Path

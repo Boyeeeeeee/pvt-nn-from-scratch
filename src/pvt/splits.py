@@ -1,4 +1,16 @@
+"""Group train/val/test split by `source`, fixed seed, saved to data/processed/splits.json.
 
+Why groups: records from the same paper/field share measurement style and often come in
+near-identical families. A random row split puts siblings in both train and test and
+inflates the scores. Here every named source lands entirely in one split.
+
+Exception: rows whose S/N is just a number carry no usable source label (they come from a
+mix of papers). Treating them as one group would drop 250+ rows into a single split, so
+each of those rows is its own group instead. That part of the split is therefore random
+rather than source-grouped; the README should say so.
+
+Usage (from the repo root):  python src/pvt/splits.py
+"""
 import json
 import random
 from pathlib import Path

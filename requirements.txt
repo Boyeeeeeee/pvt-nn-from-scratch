@@ -5,6 +5,6 @@ scikit-learn
 torch
 matplotlib
 pytest
-# optional app/
+httpx
 fastapi
 uvicorn

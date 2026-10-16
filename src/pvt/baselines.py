@@ -1,4 +1,16 @@
+"""Classical saturated-oil correlations for Pb (psia) and Bo (rb/STB).
 
+Inputs (numpy arrays or pandas Series):
+    rs   solution GOR, scf/STB
+    gg   gas specific gravity (air = 1)
+    api  oil API gravity
+    temp reservoir temperature, deg F
+
+Notes
+- Vasquez-Beggs corrects gas gravity to a 100 psig separator. Separator conditions are not in
+  this dataset, so gg is used uncorrected (same choice for every row; state it in the README).
+- Correlations are applied outside some of their original ranges; that is part of the benchmark.
+"""
 import numpy as np
 
 
